@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Upload TEST</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="jquery.iframe-transport.js"></script>
+    <script type="text/javascript" src="jquery.fileupload.js"></script>
+    <script type="text/javascript" src="jquery.cloudinary.js"></script>
+    <script type="text/javascript" src="jquery.fileupload-process.js"></script>
+    <script type="text/javascript" src="sha1_hash.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css"> 
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        $.cloudinary.config({
+            "api_key": "886265835789966",
+            "cloud_name": "zipline-co"
+        });
+        $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+    </script>
+
+    <input name="file" type="file" id="uploadinput" class="cloudinary-fileupload" data-cloudinary-field="image_upload" data-form-data=""></input>
+
+    <script type="text/javascript">
+        var timestamp = $.now();
+        var callback = "http://devpeeps.com/get2it/zLDemo/cloudinary_cors.html";
+        var api_sec = "4g60pJVD2Xr-upafgJzZwt0k6G4";
+        var api_key = "886265835789966";
+        var sig = $.sha1("callback=http://devpeeps.com/get2it/zLDemo/cloudinary_cors.html&timestamp=" + timestamp + api_sec);
+
+        var data = {
+            "timestamp": timestamp,
+            "signature": sig,
+            "callback": callback,
+            "api_key": api_key,
+        };
+        $('#uploadinput').attr('data-form-data', JSON.stringify(data));
+    </script>
+
+    <div id='show' class='preview'></div>
+     <button id='xUp' class="adminLinkButton">Upload File</button>
+    <br/>
+    <div class="case">
+    <div id='pbar' class='pbar' style="background:green;width:0px;display:none"></div>
+    <br/>
+    <div id='pubid' class='image_public_id'></div>
+    <br/>
+    <div id='url' class='url'></div>
+    <br/>
+    <div id='json_result' class='json_result'></div>
+    <br/>
+    <div id='opps' class='deleteme'>
+        <button id='del_button'>Delete File</button>
+    </div>
+</div>
+    <br/>
+
+    <script>
+    $(document).ready(function(){    
+
+     $( "#xUp" ).click(function() {
+        $( ".cloudinary-fileupload" ).trigger('click');
+        });
+     });
+
+    </script>
+
+    <script>
+        $(window).load(function () {
+
+            $('.deleteme').hide();
+
+            $('.cloudinary-fileupload').bind('fileuploadstart', function (e) {
+                $('.preview').html('Upload started...');
+            });
+
+            $('.cloudinary-fileupload').bind('fileuploadfail', function(e){
+                  $('.preview').html($.cloudinary.error); 
+            });     
+
+            $('.cloudinary-fileupload').bind('fileuploadprogress', function (e, data) {
+                $('.pbar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');
+                $('#pbar').show();
+            });
+
+            $('.cloudinary-fileupload').bind('cloudinarydone', function (e, data) {
+                $('.preview').html(
+                    $.cloudinary.image(data.result.public_id, {
+                        format: data.result.format,
+                        version: data.result.version,
+                        crop: 'scale',
+                        width: 200,
+                        height: 200
+                    })
+                );
+                $('#pubid').html("Public ID: " + data.result.public_id);
+                $('#url').html("<a href="+data.result.url+" target=_cloudinaryimg>"+data.result.url+"</a>");
+                $('#json_result').html(JSON.stringify(data.result));
+                //$('.deleteme').show();
+                return true;
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

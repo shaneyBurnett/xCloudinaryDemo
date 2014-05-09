@@ -1,0 +1,106 @@
+
+body {
+    background-image: url('blackNoise.jpg');
+    font-family:"veranda", arial, serif;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(174,174,174,0.8);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: #8073C0;
+}
+
+.adminLinkButton {
+    vertical-align: middle;
+    color: white;
+    margin-left: 30px;
+    padding: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #939393;
+    border-radius: 6px 6px 6px 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+   	 /*background-color: #4F4F4F;*/
+    background-color: black;
+    opacity: .9;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+}
+
+.adminLinkButton:hover {
+    border: 1px solid #656565;
+    color: #9784F3;
+}
+
+.profile {
+    margin-left: 10px;
+}
+
+.adminDueDate {
+    color: white;
+    padding-left: 5px;
+    padding-right: 3px;
+    font-size: 11px;
+    margin: 2px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #939393;
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-
+
+radius: 3px;
+    -webkit-border-radius: 3px;
+    background-color: black;
+    -moz-transition: opacity .25s 
+
+ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+}
+
+.cloudinary-fileupload {
+    display: none;
+}
+
+.preview {
+    display: block;
+    width: 300px;
+    height: 300px;
+    background-color: black;
+    color: white;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding: 3px;
+    margin-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 3px;
+    font-size: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #787878;
+    border-radius: 6px 6px 6px 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    opacity: .8;
+}
+
+
+.case {
+    margin-left:30px;
+    color: #888888;
+    
+}
