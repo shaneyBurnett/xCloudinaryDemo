@@ -18,8 +18,8 @@
 
     <script type="text/javascript">
         $.cloudinary.config({
-            "api_key": "886265835789966",
-            "cloud_name": "zipline-co"
+            "api_key": "<Your api Key>",
+            "cloud_name": "<your cloud name>"
         });
         $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
     </script>
@@ -28,10 +28,10 @@
 
     <script type="text/javascript">
         var timestamp = $.now();
-        var callback = "http://devpeeps.com/get2it/zLDemo/cloudinary_cors.html";
-        var api_sec = "4g60pJVD2Xr-upafgJzZwt0k6G4";
-        var api_key = "886265835789966";
-        var sig = $.sha1("callback=http://devpeeps.com/get2it/zLDemo/cloudinary_cors.html&timestamp=" + timestamp + api_sec);
+        var callback = "http://<Your domain name>/cloudinary_cors.html";
+        var api_sec = "<Your security secret>";
+        var api_key = "<Your api key";
+        var sig = $.sha1("callback=http://<your domain name>/cloudinary_cors.html&timestamp=" + timestamp + api_sec);
 
         var data = {
             "timestamp": timestamp,
